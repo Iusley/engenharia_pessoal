@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Iusley Lacerda | Engenharia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+<div class="container nav">
+<h2>Iusley Lacerda Engenharia</h2>
+<nav>
+<a href="#servicos">Serviços</a>
+<a href="#sobre">Sobre</a>
+<a href="#contato">Contato</a>
+</nav>
+</div>
+</header>
+
+<section class="hero">
+<div class="container">
+<h1>Soluções Integradas em Engenharia Elétrica, Mecânica e Segurança do Trabalho</h1>
+<p>NR-10, NR-12, NR-13, PMOC, SPDA, PGR, LTCAT, Laudos Técnicos e ART.</p>
+<a class="btn" target="_blank" href="https://api.whatsapp.com/send?phone=5583991162990&text=Olá,%20Engenheiro%20Iusley.%20Gostaria%20de%20solicitar%20um%20orçamento%20técnico.">WhatsApp</a>
+</div>
+</section>
+
+<section id="servicos" class="container">
+<h2>Serviços</h2>
+<div class="cards">
+<div class="card"><h3>Engenharia Elétrica</h3><p>SPDA, NR-10, Subestações e Laudos.</p></div>
+<div class="card"><h3>Engenharia Mecânica</h3><p>NR-13, PMOC, Caldeiras e Vasos.</p></div>
+<div class="card"><h3>Segurança do Trabalho</h3><p>NR-12, PGR, LTCAT e Perícias.</p></div>
+</div>
+</section>
+
+<section id="sobre" class="container">
+<h2>Sobre</h2>
+<p>Atendimento em Campina Grande-PB e Nordeste, com emissão de ART e responsabilidade técnica.</p>
+</section>
+
+<section id="contato" class="container">
+<h2>Solicitar Orçamento</h2>
+<form id="leadForm">
+<input id="nome" placeholder="Nome" required>
+<input id="email" placeholder="E-mail" required>
+<input id="telefone" placeholder="Telefone" required>
+<textarea id="mensagem" placeholder="Mensagem"></textarea>
+<button type="submit">Enviar</button>
+</form>
+<div id="status"></div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
