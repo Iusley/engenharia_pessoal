@@ -977,6 +977,8 @@
           <input type="hidden" name="_subject" value="Novo pedido de orçamento - Iusley Lacerda Engenharia" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="true" />
+          <input type="hidden" name="marcador" value="orcamento_site" />
+          <input type="hidden" name="status_cliente" value="novo_lead" />
 
           <div class="form-grid">
             <div class="form-field">
@@ -1052,7 +1054,11 @@
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
+    const SUPABASE_URL = "https://ylhmtbmrsmqcccgncjnr.supabase.co";
+    const SUPABASE_ANON_KEY = "COLE_SUA_CHAVE_ANON_PUBLIC_AQUI";
+
     const navToggle = document.querySelector(".nav-toggle");
     const navLinks = document.querySelector("#navLinks");
     const quoteForm = document.querySelector("#quoteForm");
@@ -1083,9 +1089,43 @@
       formAlert.className = `form-alert show ${type}`;
     }
 
-    quoteForm.addEventListener("submit", (event) => {
+    function isSupabaseConfigured() {
+      return (
+        window.supabase &&
+        SUPABASE_URL &&
+        SUPABASE_ANON_KEY &&
+        !SUPABASE_ANON_KEY.includes("COLE_SUA_CHAVE")
+      );
+    }
+
+    async function saveLeadToSupabase(formData) {
+      if (!isSupabaseConfigured()) {
+        return;
+      }
+
+      const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      const { error } = await supabaseClient.from("clientes").insert([
+        {
+          nome: formData.name,
+          email: formData.email,
+          telefone: formData.phone,
+          area_interesse: formData.area,
+          mensagem: formData.message,
+          marcador: "orcamento_site",
+          status: "novo_lead",
+          origem: "landing_page"
+        }
+      ]);
+
+      if (error) {
+        throw error;
+      }
+    }
+
+    quoteForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
       if (!quoteForm.checkValidity()) {
-        event.preventDefault();
         quoteForm.reportValidity();
         return;
       }
@@ -1104,10 +1144,22 @@
       };
 
       /*
-        O envio real está configurado via FormSubmit no atributo action do formulario.
-        No primeiro envio, confirme o e-mail recebido pelo FormSubmit para ativar os recebimentos.
-        Se futuramente quiser usar Formspree, EmailJS ou backend proprio, envie formData para o endpoint escolhido aqui.
+        Fluxo atual:
+        1. Salva o lead no Supabase, se SUPABASE_ANON_KEY estiver configurada.
+        2. Envia o formulario para o FormSubmit, que encaminha o pedido para o e-mail.
+        O marcador "orcamento_site" identifica automaticamente clientes vindos desta landing page.
       */
+
+      try {
+        await saveLeadToSupabase(formData);
+      } catch (error) {
+        showFormAlert("Nao foi possivel registrar o cliente no banco. Tente novamente ou fale pelo WhatsApp.", "error");
+        submitButton.disabled = false;
+        submitButton.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Enviar mensagem';
+        return;
+      }
+
+      quoteForm.submit();
     });
   </script>
 </body>
