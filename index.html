@@ -972,8 +972,11 @@
           </div>
         </div>
 
-        <form class="form-card" id="quoteForm">
+        <form class="form-card" id="quoteForm" action="https://formsubmit.co/iusley.sl@hotmail.com" method="POST">
           <h3>Solicitar Orçamento</h3>
+          <input type="hidden" name="_subject" value="Novo pedido de orçamento - Iusley Lacerda Engenharia" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="true" />
 
           <div class="form-grid">
             <div class="form-field">
@@ -1080,15 +1083,13 @@
       formAlert.className = `form-alert show ${type}`;
     }
 
-    quoteForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-
+    quoteForm.addEventListener("submit", (event) => {
       if (!quoteForm.checkValidity()) {
+        event.preventDefault();
         quoteForm.reportValidity();
         return;
       }
 
-      const originalContent = submitButton.innerHTML;
       submitButton.disabled = true;
       submitButton.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Enviando...';
       formAlert.className = "form-alert";
@@ -1103,18 +1104,10 @@
       };
 
       /*
-        Integração futura:
-        - Formspree: substitua a simulação abaixo por fetch("https://formspree.io/f/SEU_ID", { method: "POST", body: JSON.stringify(formData), headers: { "Content-Type": "application/json" } })
-        - EmailJS: chame emailjs.send("SEU_SERVICE_ID", "SEU_TEMPLATE_ID", formData)
-        - Backend próprio: envie formData para sua rota de API, CRM ou automação.
+        O envio real está configurado via FormSubmit no atributo action do formulario.
+        No primeiro envio, confirme o e-mail recebido pelo FormSubmit para ativar os recebimentos.
+        Se futuramente quiser usar Formspree, EmailJS ou backend proprio, envie formData para o endpoint escolhido aqui.
       */
-
-      await new Promise((resolve) => setTimeout(resolve, 1200));
-
-      showFormAlert("Mensagem enviada com sucesso! Em breve entrarei em contato para entender sua demanda técnica.", "success");
-      quoteForm.reset();
-      submitButton.disabled = false;
-      submitButton.innerHTML = originalContent;
     });
   </script>
 </body>
