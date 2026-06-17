@@ -1,62 +1,1121 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Iusley Lacerda | Engenharia</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Iusley Lacerda Engenharia: soluções em engenharia elétrica, mecânica e segurança do trabalho com ART, responsabilidade técnica e conformidade normativa." />
+  <title>Iusley Lacerda | Engenharia</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <style>
+    :root {
+      --navy: #0b2635;
+      --petrol: #123f52;
+      --steel: #5f6f7a;
+      --graphite: #172027;
+      --carbon: #222a31;
+      --ash: #eef2f3;
+      --white: #ffffff;
+      --muted: #687782;
+      --line: rgba(18, 63, 82, 0.14);
+      --orange: #f47c20;
+      --orange-dark: #c95c0d;
+      --yellow: #f2b705;
+      --success: #14845b;
+      --danger: #b42318;
+      --shadow: 0 22px 55px rgba(11, 38, 53, 0.16);
+      --radius: 8px;
+      --container: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--graphite);
+      background: #f7f9fa;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(247, 249, 250, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--petrol), var(--carbon));
+      border-radius: var(--radius);
+      box-shadow: 0 10px 28px rgba(11, 38, 53, 0.18);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--steel);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      transition: color 180ms ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--orange);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+    }
+
+    .btn {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 0;
+      border-radius: var(--radius);
+      padding: 0 20px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease, color 180ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: var(--white);
+      background: var(--orange);
+      box-shadow: 0 16px 34px rgba(244, 124, 32, 0.28);
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-dark);
+    }
+
+    .btn-secondary {
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-dark {
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    .btn-dark:hover {
+      background: var(--petrol);
+    }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      color: var(--white);
+      background:
+        linear-gradient(110deg, rgba(11, 38, 53, 0.95) 0%, rgba(18, 63, 82, 0.86) 52%, rgba(34, 42, 49, 0.72) 100%),
+        url("https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1800&q=80") center / cover;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 90px;
+      z-index: -1;
+      background: linear-gradient(to bottom, rgba(247, 249, 250, 0), #f7f9fa);
+    }
+
+    .hero-grid {
+      min-height: 710px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.72fr);
+      gap: 54px;
+      align-items: center;
+      padding: 78px 0 96px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 16px;
+      color: var(--yellow);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 3px;
+      background: currentColor;
+      border-radius: 999px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    .hero h1 {
+      max-width: 860px;
+      margin-bottom: 22px;
+      font-size: clamp(2.55rem, 7vw, 5.25rem);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-subtitle {
+      max-width: 740px;
+      margin-bottom: 34px;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: clamp(1rem, 2vw, 1.22rem);
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .trust-panel {
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius);
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .trust-panel h2 {
+      margin-bottom: 18px;
+      font-size: 1.2rem;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .trust-item {
+      min-height: 92px;
+      display: grid;
+      align-content: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: rgba(11, 38, 53, 0.34);
+    }
+
+    .trust-item strong {
+      font-size: 1.35rem;
+      color: var(--yellow);
+    }
+
+    .trust-item span {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.86rem;
+      line-height: 1.45;
+    }
+
+    .section {
+      padding: 92px 0;
+    }
+
+    .section-header {
+      max-width: 780px;
+      margin-bottom: 34px;
+    }
+
+    .section-header.center {
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .section-header.center .eyebrow {
+      justify-content: center;
+    }
+
+    .section-header.center .eyebrow::before {
+      display: none;
+    }
+
+    .section h2 {
+      margin-bottom: 16px;
+      color: var(--navy);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+
+    .section-description {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.72;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      position: relative;
+      min-height: 100%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      background: var(--white);
+      box-shadow: 0 16px 40px rgba(11, 38, 53, 0.06);
+      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 5px;
+      background: linear-gradient(90deg, var(--orange), var(--yellow));
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(244, 124, 32, 0.42);
+      box-shadow: var(--shadow);
+    }
+
+    .service-icon {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      color: var(--white);
+      background: var(--petrol);
+      border-radius: var(--radius);
+      font-size: 1.45rem;
+    }
+
+    .service-card h3 {
+      margin-bottom: 14px;
+      color: var(--navy);
+      font-size: 1.28rem;
+    }
+
+    .service-card ul {
+      display: grid;
+      gap: 11px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .service-card li {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 9px;
+    }
+
+    .service-card li::before {
+      content: "\f00c";
+      color: var(--orange);
+      font-family: "Font Awesome 6 Free";
+      font-size: 0.82rem;
+      font-weight: 900;
+      line-height: 1.9;
+    }
+
+    .about {
+      background: var(--ash);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.78fr);
+      gap: 54px;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .credential-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .credential {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    .credential i {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--orange);
+      border-radius: var(--radius);
+    }
+
+    .photo-placeholder {
+      min-height: 470px;
+      display: grid;
+      align-content: end;
+      overflow: hidden;
+      border-radius: var(--radius);
+      color: var(--white);
+      background:
+        linear-gradient(180deg, rgba(11, 38, 53, 0.08), rgba(11, 38, 53, 0.88)),
+        url("https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1000&q=80") center / cover;
+      box-shadow: var(--shadow);
+    }
+
+    .photo-caption {
+      padding: 28px;
+    }
+
+    .photo-caption strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.35rem;
+    }
+
+    .photo-caption span {
+      color: rgba(255, 255, 255, 0.82);
+      line-height: 1.6;
+    }
+
+    .contact {
+      background:
+        linear-gradient(135deg, rgba(11, 38, 53, 0.98), rgba(18, 63, 82, 0.96)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=80") center / cover;
+      color: var(--white);
+    }
+
+    .contact .section-header h2,
+    .contact .section-description {
+      color: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(320px, 1fr);
+      gap: 46px;
+      align-items: start;
+    }
+
+    .contact-info {
+      display: grid;
+      gap: 18px;
+    }
+
+    .contact-box {
+      display: flex;
+      gap: 14px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .contact-box i {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      flex: 0 0 auto;
+      place-items: center;
+      color: var(--yellow);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+    }
+
+    .contact-box strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .contact-box span {
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.55;
+    }
+
+    .form-card {
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius);
+      padding: 28px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .form-card h3 {
+      margin-bottom: 18px;
+      color: var(--navy);
+      font-size: 1.45rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .form-field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .form-field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: var(--navy);
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid #d9e1e5;
+      border-radius: var(--radius);
+      padding: 13px 14px;
+      color: var(--graphite);
+      background: #fbfcfd;
+      outline: none;
+      transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    textarea {
+      min-height: 132px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--orange);
+      background: var(--white);
+      box-shadow: 0 0 0 4px rgba(244, 124, 32, 0.14);
+    }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 18px;
+    }
+
+    .form-alert {
+      display: none;
+      margin-top: 16px;
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .form-alert.show {
+      display: block;
+    }
+
+    .form-alert.success {
+      color: #0f5132;
+      background: #d1e7dd;
+      border: 1px solid #badbcc;
+    }
+
+    .form-alert.error {
+      color: var(--danger);
+      background: #fde7e5;
+      border: 1px solid #fac5c0;
+    }
+
+    .footer {
+      color: rgba(255, 255, 255, 0.82);
+      background: #081c27;
+      padding: 34px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .footer-brand {
+      color: var(--white);
+      font-weight: 900;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      font-weight: 700;
+    }
+
+    .footer-note {
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 60;
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: #25d366;
+      border-radius: 999px;
+      box-shadow: 0 16px 36px rgba(37, 211, 102, 0.34);
+      font-size: 1.7rem;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 22px 44px rgba(37, 211, 102, 0.42);
+    }
+
+    @media (max-width: 980px) {
+      .nav-toggle {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 76px;
+        left: 16px;
+        right: 16px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 13px 10px;
+      }
+
+      .nav-links .btn {
+        margin-top: 8px;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        min-height: auto;
+        padding: 62px 0 84px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-note {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 24px, var(--container));
+      }
+
+      .logo span:last-child {
+        white-space: normal;
+      }
+
+      .hero h1 {
+        font-size: 2.35rem;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      .trust-grid,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-card {
+        padding: 22px;
+      }
+
+      .form-actions .btn {
+        width: 100%;
+      }
+
+      .whatsapp-float {
+        right: 16px;
+        bottom: 16px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header>
-<div class="container nav">
-<h2>Iusley Lacerda Engenharia</h2>
-<nav>
-<a href="#servicos">Serviços</a>
-<a href="#sobre">Sobre</a>
-<a href="#contato">Contato</a>
-</nav>
-</div>
-</header>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="#home" aria-label="Iusley Lacerda Engenharia">
+        <span class="logo-mark">IL</span>
+        <span>Iusley Lacerda | Engenharia</span>
+      </a>
 
-<section class="hero">
-<div class="container">
-<h1>Soluções Integradas em Engenharia Elétrica, Mecânica e Segurança do Trabalho</h1>
-<p>NR-10, NR-12, NR-13, PMOC, SPDA, PGR, LTCAT, Laudos Técnicos e ART.</p>
-<a class="btn" target="_blank" href="https://api.whatsapp.com/send?phone=5583991162990&text=Olá,%20Engenheiro%20Iusley.%20Gostaria%20de%20solicitar%20um%20orçamento%20técnico.">WhatsApp</a>
-</div>
-</section>
+      <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-controls="navLinks" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
-<section id="servicos" class="container">
-<h2>Serviços</h2>
-<div class="cards">
-<div class="card"><h3>Engenharia Elétrica</h3><p>SPDA, NR-10, Subestações e Laudos.</p></div>
-<div class="card"><h3>Engenharia Mecânica</h3><p>NR-13, PMOC, Caldeiras e Vasos.</p></div>
-<div class="card"><h3>Segurança do Trabalho</h3><p>NR-12, PGR, LTCAT e Perícias.</p></div>
-</div>
-</section>
+      <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
+        <a href="#home">Home</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+        <a class="btn btn-primary" href="#contato">Pedir Orçamento</a>
+      </nav>
+    </div>
+  </header>
 
-<section id="sobre" class="container">
-<h2>Sobre</h2>
-<p>Atendimento em Campina Grande-PB e Nordeste, com emissão de ART e responsabilidade técnica.</p>
-</section>
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">CREA, ART e conformidade técnica</p>
+          <h1>Soluções Integradas em Engenharia Elétrica, Mecânica e Segurança do Trabalho</h1>
+          <p class="hero-subtitle">
+            Projetos, laudos, inspeções e regularizações com precisão técnica, emissão de ART,
+            responsabilidade profissional e aderência às normas NRs, NBRs e ABNT.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5583991162990&text=Ol%C3%A1,%20Engenheiro%20Iusley.%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20t%C3%A9cnico.">
+              <i class="fa-brands fa-whatsapp"></i>
+              Fale no WhatsApp
+            </a>
+            <a class="btn btn-secondary" href="#servicos">
+              <i class="fa-solid fa-list-check"></i>
+              Ver Serviços
+            </a>
+          </div>
+        </div>
 
-<section id="contato" class="container">
-<h2>Solicitar Orçamento</h2>
-<form id="leadForm">
-<input id="nome" placeholder="Nome" required>
-<input id="email" placeholder="E-mail" required>
-<input id="telefone" placeholder="Telefone" required>
-<textarea id="mensagem" placeholder="Mensagem"></textarea>
-<button type="submit">Enviar</button>
-</form>
-<div id="status"></div>
-</section>
+        <aside class="trust-panel" aria-label="Indicadores de atuação">
+          <h2>Atuação orientada por norma, segurança e viabilidade</h2>
+          <div class="trust-grid">
+            <div class="trust-item">
+              <strong>NRs</strong>
+              <span>Regularidade em segurança e operação.</span>
+            </div>
+            <div class="trust-item">
+              <strong>ABNT</strong>
+              <span>Projetos e laudos baseados em normas técnicas.</span>
+            </div>
+            <div class="trust-item">
+              <strong>ART</strong>
+              <span>Responsabilidade técnica documentada.</span>
+            </div>
+            <div class="trust-item">
+              <strong>360°</strong>
+              <span>Visão integrada entre elétrica, mecânica e segurança.</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabase.js"></script>
-<script src="js/app.js"></script>
+    <section class="section" id="servicos">
+      <div class="container">
+        <div class="section-header center">
+          <p class="eyebrow">Serviços técnicos</p>
+          <h2>Engenharia aplicada para reduzir riscos, regularizar operações e apoiar decisões</h2>
+          <p class="section-description">
+            Atendimento para indústrias, comércios, condomínios e residências que precisam de
+            documentação confiável, adequação normativa e soluções tecnicamente viáveis.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h3>Engenharia Elétrica</h3>
+            <ul>
+              <li>Projetos elétricos residenciais e industriais.</li>
+              <li>SPDA, para-raios e sistemas de aterramento.</li>
+              <li>Laudos de instalações elétricas e conformidade.</li>
+              <li>Eficiência energética e análise de cargas.</li>
+              <li>Subestações, inspeções e documentação técnica.</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
+            <h3>Engenharia Mecânica</h3>
+            <ul>
+              <li>Laudos e inspeções de máquinas e equipamentos.</li>
+              <li>PMOC para sistemas de ar-condicionado.</li>
+              <li>Projetos de estruturas metálicas.</li>
+              <li>Inspeção de vasos de pressão e caldeiras.</li>
+              <li>Emissão de ARTs e relatórios técnicos.</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+            <h3>Segurança do Trabalho</h3>
+            <ul>
+              <li>Adequação à NR-12 para segurança em máquinas.</li>
+              <li>Laudos de insalubridade e periculosidade.</li>
+              <li>Elaboração de PGR e LTCAT.</li>
+              <li>Projetos de linha de vida e proteção contra quedas.</li>
+              <li>Auditoria técnica e avaliação de riscos.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="sobre">
+      <div class="container about-grid">
+        <div class="about-text">
+          <p class="eyebrow">Sobre mim</p>
+          <h2>Competência multidisciplinar para ambientes que exigem precisão e segurança</h2>
+          <p>
+            Sou Iusley Lacerda, engenheiro com atuação integrada em engenharia elétrica,
+            engenharia mecânica e engenharia de segurança do trabalho. Minha abordagem une
+            visão técnica, responsabilidade documental e compromisso com a operação segura.
+          </p>
+          <p>
+            Atendo indústrias, comércios e residências com foco em diagnóstico claro,
+            legalidade, viabilidade técnica e soluções alinhadas às exigências de fiscalização,
+            manutenção, auditoria e regularização junto aos órgãos competentes.
+          </p>
+
+          <div class="credential-list">
+            <div class="credential">
+              <i class="fa-solid fa-file-signature"></i>
+              <span>Emissão de ART e documentação técnica.</span>
+            </div>
+            <div class="credential">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>Compromisso com segurança industrial e conformidade.</span>
+            </div>
+            <div class="credential">
+              <i class="fa-solid fa-handshake-angle"></i>
+              <span>Atendimento personalizado para cada realidade operacional.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="photo-placeholder" role="img" aria-label="Espaço visual para foto profissional de Iusley Lacerda">
+          <div class="photo-caption">
+            <strong>Iusley Lacerda</strong>
+            <span>Engenharia com responsabilidade técnica, análise normativa e foco em resultado.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contato">
+      <div class="container contact-grid">
+        <div>
+          <div class="section-header">
+            <p class="eyebrow">Contato e orçamento</p>
+            <h2>Solicite uma avaliação técnica para o seu projeto</h2>
+            <p class="section-description">
+              Envie sua demanda e informe a área de interesse. O retorno pode orientar os
+              próximos passos para laudos, adequações, projetos, inspeções ou regularização.
+            </p>
+          </div>
+
+          <div class="contact-info">
+            <div class="contact-box">
+              <i class="fa-brands fa-whatsapp"></i>
+              <div>
+                <strong>Atendimento via WhatsApp</strong>
+                <span>Canal direto para solicitações rápidas e alinhamento inicial.</span>
+              </div>
+            </div>
+            <div class="contact-box">
+              <i class="fa-solid fa-location-dot"></i>
+              <div>
+                <strong>Atuação regional</strong>
+                <span>Campina Grande-PB, Nordeste e demandas técnicas sob consulta.</span>
+              </div>
+            </div>
+            <div class="contact-box">
+              <i class="fa-solid fa-scale-balanced"></i>
+              <div>
+                <strong>Regularidade técnica</strong>
+                <span>Serviços conduzidos com atenção ao CREA, ART, NRs, NBRs e ABNT.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="form-card" id="quoteForm">
+          <h3>Solicitar Orçamento</h3>
+
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="name">Nome</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Seu nome completo" required />
+            </div>
+
+            <div class="form-field">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@email.com" required />
+            </div>
+
+            <div class="form-field">
+              <label for="phone">Telefone</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(83) 99999-9999" required />
+            </div>
+
+            <div class="form-field">
+              <label for="area">Área de Interesse</label>
+              <select id="area" name="area" required>
+                <option value="">Selecione uma área</option>
+                <option value="Engenharia Elétrica">Engenharia Elétrica</option>
+                <option value="Engenharia Mecânica">Engenharia Mecânica</option>
+                <option value="Segurança do Trabalho">Segurança do Trabalho</option>
+                <option value="Outros">Outros</option>
+              </select>
+            </div>
+
+            <div class="form-field full">
+              <label for="message">Mensagem</label>
+              <textarea id="message" name="message" placeholder="Descreva brevemente sua necessidade técnica" required></textarea>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-dark" type="submit" id="submitButton">
+              <i class="fa-solid fa-paper-plane"></i>
+              Enviar mensagem
+            </button>
+            <a class="btn btn-primary" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5583991162990&text=Ol%C3%A1,%20Engenheiro%20Iusley.%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20t%C3%A9cnico.">
+              <i class="fa-brands fa-whatsapp"></i>
+              WhatsApp
+            </a>
+          </div>
+
+          <div class="form-alert" id="formAlert" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">Iusley Lacerda | Engenharia</div>
+        <small>© <span id="currentYear"></span> Todos os direitos reservados.</small>
+      </div>
+
+      <nav class="footer-links" aria-label="Links rápidos do rodapé">
+        <a href="#home">Home</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <div class="footer-note">
+        Atuação com foco em compliance, regularidade técnica junto ao CREA e atendimento às normas e órgãos competentes.
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" target="_blank" rel="noopener" aria-label="Falar com Iusley Lacerda pelo WhatsApp" href="https://api.whatsapp.com/send?phone=5583991162990&text=Ol%C3%A1,%20Engenheiro%20Iusley.%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20t%C3%A9cnico.">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script>
+    const navToggle = document.querySelector(".nav-toggle");
+    const navLinks = document.querySelector("#navLinks");
+    const quoteForm = document.querySelector("#quoteForm");
+    const submitButton = document.querySelector("#submitButton");
+    const formAlert = document.querySelector("#formAlert");
+    const currentYear = document.querySelector("#currentYear");
+
+    currentYear.textContent = new Date().getFullYear();
+
+    navToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+      navToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
+        navToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      });
+    });
+
+    function showFormAlert(message, type) {
+      formAlert.textContent = message;
+      formAlert.className = `form-alert show ${type}`;
+    }
+
+    quoteForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!quoteForm.checkValidity()) {
+        quoteForm.reportValidity();
+        return;
+      }
+
+      const originalContent = submitButton.innerHTML;
+      submitButton.disabled = true;
+      submitButton.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Enviando...';
+      formAlert.className = "form-alert";
+      formAlert.textContent = "";
+
+      const formData = {
+        name: document.querySelector("#name").value.trim(),
+        email: document.querySelector("#email").value.trim(),
+        phone: document.querySelector("#phone").value.trim(),
+        area: document.querySelector("#area").value,
+        message: document.querySelector("#message").value.trim()
+      };
+
+      /*
+        Integração futura:
+        - Formspree: substitua a simulação abaixo por fetch("https://formspree.io/f/SEU_ID", { method: "POST", body: JSON.stringify(formData), headers: { "Content-Type": "application/json" } })
+        - EmailJS: chame emailjs.send("SEU_SERVICE_ID", "SEU_TEMPLATE_ID", formData)
+        - Backend próprio: envie formData para sua rota de API, CRM ou automação.
+      */
+
+      await new Promise((resolve) => setTimeout(resolve, 1200));
+
+      showFormAlert("Mensagem enviada com sucesso! Em breve entrarei em contato para entender sua demanda técnica.", "success");
+      quoteForm.reset();
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalContent;
+    });
+  </script>
 </body>
 </html>
