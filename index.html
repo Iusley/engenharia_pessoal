@@ -563,6 +563,29 @@
       grid-column: 1 / -1;
     }
 
+    .newsletter-field {
+      margin-top: 2px;
+    }
+
+    .checkbox-label {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 10px;
+      align-items: start;
+      color: var(--steel);
+      font-weight: 700;
+      line-height: 1.5;
+      cursor: pointer;
+    }
+
+    .checkbox-label input {
+      width: 18px;
+      height: 18px;
+      margin: 3px 0 0;
+      accent-color: var(--orange);
+      cursor: pointer;
+    }
+
     label {
       color: var(--navy);
       font-size: 0.92rem;
@@ -977,7 +1000,6 @@
           <input type="hidden" name="_subject" value="Novo pedido de orçamento - Iusley Lacerda Engenharia" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="true" />
-          <input type="hidden" name="marcador" value="orcamento_site" />
           <input type="hidden" name="status_cliente" value="novo_lead" />
 
           <div class="form-grid">
@@ -1010,6 +1032,13 @@
             <div class="form-field full">
               <label for="message">Mensagem</label>
               <textarea id="message" name="message" placeholder="Descreva brevemente sua necessidade técnica" required></textarea>
+            </div>
+
+            <div class="form-field full newsletter-field">
+              <label class="checkbox-label" for="newsletter">
+                <input id="newsletter" name="receber_newsletter" type="checkbox" value="sim" />
+                <span>Quero receber novidades, conteúdos técnicos e atualizações por e-mail.</span>
+              </label>
             </div>
           </div>
 
@@ -1111,7 +1140,7 @@
           telefone: formData.phone,
           area_interesse: formData.area,
           mensagem: formData.message,
-          marcador: "orcamento_site",
+          receber_newsletter: formData.receber_newsletter,
           status: "novo_lead",
           origem: "landing_page"
         }
@@ -1140,14 +1169,15 @@
         email: document.querySelector("#email").value.trim(),
         phone: document.querySelector("#phone").value.trim(),
         area: document.querySelector("#area").value,
-        message: document.querySelector("#message").value.trim()
+        message: document.querySelector("#message").value.trim(),
+        receber_newsletter: document.querySelector("#newsletter").checked
       };
 
       /*
         Fluxo atual:
         1. Salva o lead no Supabase, se SUPABASE_ANON_KEY estiver configurada.
         2. Envia o formulario para o FormSubmit, que encaminha o pedido para o e-mail.
-        O marcador "orcamento_site" identifica automaticamente clientes vindos desta landing page.
+        O campo receber_newsletter identifica quando o cliente aceitou receber comunicados futuros.
       */
 
       try {
